@@ -9,10 +9,9 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 
-
+@Tag("autotest")
 public class Autotest  extends TestData{
     @Test
-    @Tag("autotest")
     @DisplayName("Successful registration test")
     void fillFormTest() {
         String firstName = "Thomas";
