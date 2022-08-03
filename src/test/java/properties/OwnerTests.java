@@ -16,7 +16,7 @@ public class OwnerTests {
     System.out.println("Login: " + login);
     System.out.println("password: " + password);
 
-    String message = "I logged in as " + login + "with password " + password;
+    String message = "I logged in as " + login + " with password " + password;
     System.out.println(message);
 }
 
