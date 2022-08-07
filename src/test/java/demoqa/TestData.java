@@ -16,12 +16,20 @@ public class TestData {
     @BeforeAll
     static void setUp() {
         CredentialsConfig config = ConfigFactory.create(CredentialsConfig.class);
+        String selenoidLogin = config.login();
+        String selenoidPassword = config.password();
 
+        String selenoidURL = System.getProperty("selenoidURL");
+        System.out.println(selenoidURL);
+        String selenoidConnectionString = String.format("https://%s:%s@%s/wd/hub",
+                selenoidLogin,
+                selenoidPassword,
+                selenoidURL);
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
 
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1280x609";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
+        Configuration.remote = selenoidConnectionString;
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("enableVNC", true);
